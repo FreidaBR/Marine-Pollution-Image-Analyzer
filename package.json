@@ -1,0 +1,28 @@
+{
+  "name": "marine-pollution-image-analyzer",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "description": "Repo-level tooling (Git hooks) for the Marine Pollution Image Analyzer monorepo.",
+  "scripts": {
+    "prepare": "husky"
+  },
+  "devDependencies": {
+    "eslint": "^10.10.0",
+    "husky": "^9.1.7",
+    "lint-staged": "^17.5.1",
+    "prettier": "^3.4.2"
+  },
+  "lint-staged": {
+    "frontend/**/*.{js,jsx}": [
+      "eslint --fix",
+      "prettier --write"
+    ],
+    "*.{json,md,yml,yaml}": [
+      "prettier --write"
+    ],
+    "*.py": [
+      "bash -c 'if command -v ruff >/dev/null 2>&1; then ruff check --fix \"$@\" && ruff format \"$@\"; else echo \"ruff not installed; skipping Python lint/format (see README Getting Started)\"; fi' --"
+    ]
+  }
+}
