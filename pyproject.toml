@@ -13,3 +13,6 @@ select = ["E", "F", "I", "W"]
 [tool.pytest.ini_options]
 testpaths = ["backend/tests", "reporting/tests"]
 python_files = ["test_*.py", "*_test.py"]
+# Repo root on the path so "reporting"/"ai_service" import as namespace
+# packages; "backend" so backend tests can `import app`.
+pythonpath = [".", "backend"]
