@@ -4,19 +4,33 @@ Run locally with:
     uvicorn app.main:app --reload --host $BACKEND_HOST --port $BACKEND_PORT
 """
 
+import sys
 from collections.abc import AsyncIterator
 from contextlib import asynccontextmanager
+from pathlib import Path
 
-from fastapi import FastAPI, HTTPException, Request
-from fastapi.exceptions import RequestValidationError
-from fastapi.middleware.cors import CORSMiddleware
-from fastapi.responses import JSONResponse
-from fastapi.staticfiles import StaticFiles
+# When run the documented way (`cd backend && uvicorn app.main:app`), only
+# backend/ is on sys.path — the repo root (parent of ai_service/ and
+# reporting/) isn't, so the deferred `import ai_service...` / `import
+# reporting...` calls in inference_service.py/severity_service.py/
+# report_service.py fail with ModuleNotFoundError even when those modules
+# are implemented. Pytest doesn't hit this (pyproject.toml's `pythonpath`
+# adds the repo root for tests only) — add it here too so it's true for any
+# way this app gets started.
+_REPO_ROOT = Path(__file__).resolve().parents[2]
+if str(_REPO_ROOT) not in sys.path:
+    sys.path.insert(0, str(_REPO_ROOT))
 
-from app.api.router import api_router
-from app.core.config import get_settings
-from app.db.base import create_all
-from app.services.storage_service import UPLOAD_DIR
+from fastapi import FastAPI, HTTPException, Request  # noqa: E402
+from fastapi.exceptions import RequestValidationError  # noqa: E402
+from fastapi.middleware.cors import CORSMiddleware  # noqa: E402
+from fastapi.responses import JSONResponse  # noqa: E402
+from fastapi.staticfiles import StaticFiles  # noqa: E402
+
+from app.api.router import api_router  # noqa: E402
+from app.core.config import get_settings  # noqa: E402
+from app.db.base import create_all  # noqa: E402
+from app.services.storage_service import UPLOAD_DIR  # noqa: E402
 
 settings = get_settings()
 
