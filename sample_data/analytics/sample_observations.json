@@ -1,0 +1,207 @@
+[
+  {
+    "observation_id": "OBS-2026-09-001",
+    "status": "completed",
+    "image_url": "https://images.unsplash.com/photo-1621451537084-482c73073a0f?auto=format&fit=crop&w=800&q=80",
+    "observation_date": "2026-09-01T09:15:00Z",
+    "location": {
+      "name": "Karwar Coast - Rabindranath Tagore Beach",
+      "latitude": 14.8092,
+      "longitude": 74.1294,
+      "observation_date": "2026-09-01T09:15:00Z"
+    },
+    "detections": [
+      { "class_name": "marine_debris", "confidence": 0.74, "bbox": [140.0, 180.0, 260.0, 270.0], "area_ratio": 0.018 },
+      { "class_name": "marine_debris", "confidence": 0.68, "bbox": [330.0, 220.0, 420.0, 310.0], "area_ratio": 0.012 }
+    ],
+    "summary": {
+      "dominant_category": "marine_debris",
+      "total_detections": 2,
+      "severity": "Moderate",
+      "severity_score": 38,
+      "average_confidence": 0.71,
+      "max_confidence": 0.74,
+      "estimated_coverage": 0.03
+    }
+  },
+  {
+    "observation_id": "OBS-2026-09-002",
+    "status": "completed",
+    "image_url": "https://images.unsplash.com/photo-1618477461853-cf6ed80faba5?auto=format&fit=crop&w=800&q=80",
+    "observation_date": "2026-09-03T11:30:00Z",
+    "location": {
+      "name": "Mangalore Ullal Coastal Sanctuary",
+      "latitude": 12.8085,
+      "longitude": 74.8488,
+      "observation_date": "2026-09-03T11:30:00Z"
+    },
+    "detections": [],
+    "summary": {
+      "dominant_category": "None",
+      "total_detections": 0,
+      "severity": "Clean",
+      "severity_score": 0,
+      "average_confidence": 0.0,
+      "max_confidence": 0.0,
+      "estimated_coverage": 0.0
+    }
+  },
+  {
+    "observation_id": "OBS-2026-09-003",
+    "status": "completed",
+    "image_url": "https://images.unsplash.com/photo-1544551763-46a013bb70d5?auto=format&fit=crop&w=800&q=80",
+    "observation_date": "2026-09-06T14:00:00Z",
+    "location": {
+      "name": "Gokarna Main Beach & Kudle Bay",
+      "latitude": 14.5426,
+      "longitude": 74.3164,
+      "observation_date": "2026-09-06T14:00:00Z"
+    },
+    "detections": [
+      { "class_name": "marine_debris", "confidence": 0.78, "bbox": [190.0, 240.0, 310.0, 330.0], "area_ratio": 0.015 }
+    ],
+    "summary": {
+      "dominant_category": "marine_debris",
+      "total_detections": 1,
+      "severity": "Low",
+      "severity_score": 22,
+      "average_confidence": 0.78,
+      "max_confidence": 0.78,
+      "estimated_coverage": 0.015
+    }
+  },
+  {
+    "observation_id": "OBS-2026-09-004",
+    "status": "completed",
+    "image_url": "https://images.unsplash.com/photo-1530587191325-3db32d826c18?auto=format&fit=crop&w=800&q=80",
+    "observation_date": "2026-09-08T10:45:00Z",
+    "location": {
+      "name": "Malpe Beach & St. Marys Terminal",
+      "latitude": 13.3524,
+      "longitude": 74.7042,
+      "observation_date": "2026-09-08T10:45:00Z"
+    },
+    "detections": [
+      { "class_name": "marine_debris", "confidence": 0.86, "bbox": [110.0, 140.0, 270.0, 290.0], "area_ratio": 0.035 },
+      { "class_name": "marine_debris", "confidence": 0.81, "bbox": [340.0, 200.0, 480.0, 320.0], "area_ratio": 0.028 },
+      { "class_name": "marine_debris", "confidence": 0.79, "bbox": [160.0, 310.0, 290.0, 420.0], "area_ratio": 0.022 }
+    ],
+    "summary": {
+      "dominant_category": "marine_debris",
+      "total_detections": 3,
+      "severity": "Moderate",
+      "severity_score": 48,
+      "average_confidence": 0.82,
+      "max_confidence": 0.86,
+      "estimated_coverage": 0.085
+    }
+  },
+  {
+    "observation_id": "OBS-2026-09-005",
+    "status": "completed",
+    "image_url": "https://images.unsplash.com/photo-1621451537084-482c73073a0f?auto=format&fit=crop&w=800&q=80",
+    "observation_date": "2026-09-10T15:20:00Z",
+    "location": {
+      "name": "Panambur Beach & Commercial Harbour",
+      "latitude": 12.9467,
+      "longitude": 74.8078,
+      "observation_date": "2026-09-10T15:20:00Z"
+    },
+    "detections": [
+      { "class_name": "marine_debris", "confidence": 0.92, "bbox": [80.0, 90.0, 290.0, 320.0], "area_ratio": 0.065 },
+      { "class_name": "marine_debris", "confidence": 0.89, "bbox": [320.0, 160.0, 510.0, 340.0], "area_ratio": 0.052 },
+      { "class_name": "marine_debris", "confidence": 0.85, "bbox": [190.0, 350.0, 380.0, 480.0], "area_ratio": 0.041 },
+      { "class_name": "marine_debris", "confidence": 0.88, "bbox": [430.0, 320.0, 590.0, 470.0], "area_ratio": 0.038 }
+    ],
+    "summary": {
+      "dominant_category": "marine_debris",
+      "total_detections": 4,
+      "severity": "High",
+      "severity_score": 65,
+      "average_confidence": 0.885,
+      "max_confidence": 0.92,
+      "estimated_coverage": 0.196
+    }
+  },
+  {
+    "observation_id": "OBS-2026-09-006",
+    "status": "completed",
+    "image_url": "https://images.unsplash.com/photo-1544551763-46a013bb70d5?auto=format&fit=crop&w=800&q=80",
+    "observation_date": "2026-09-12T09:00:00Z",
+    "location": {
+      "name": "Karwar Coast - Rabindranath Tagore Beach",
+      "latitude": 14.8092,
+      "longitude": 74.1294,
+      "observation_date": "2026-09-12T09:00:00Z"
+    },
+    "detections": [
+      { "class_name": "marine_debris", "confidence": 0.88, "bbox": [120.0, 150.0, 280.0, 300.0], "area_ratio": 0.032 },
+      { "class_name": "marine_debris", "confidence": 0.84, "bbox": [320.0, 200.0, 450.0, 320.0], "area_ratio": 0.025 },
+      { "class_name": "marine_debris", "confidence": 0.79, "bbox": [190.0, 320.0, 310.0, 420.0], "area_ratio": 0.019 }
+    ],
+    "summary": {
+      "dominant_category": "marine_debris",
+      "total_detections": 3,
+      "severity": "Moderate",
+      "severity_score": 52,
+      "average_confidence": 0.837,
+      "max_confidence": 0.88,
+      "estimated_coverage": 0.076
+    }
+  },
+  {
+    "observation_id": "OBS-2026-09-007",
+    "status": "completed",
+    "image_url": "https://images.unsplash.com/photo-1618477461853-cf6ed80faba5?auto=format&fit=crop&w=800&q=80",
+    "observation_date": "2026-09-14T11:15:00Z",
+    "location": {
+      "name": "Panambur Beach & Commercial Harbour",
+      "latitude": 12.9467,
+      "longitude": 74.8078,
+      "observation_date": "2026-09-14T11:15:00Z"
+    },
+    "detections": [
+      { "class_name": "marine_debris", "confidence": 0.94, "bbox": [50.0, 60.0, 320.0, 340.0], "area_ratio": 0.09 },
+      { "class_name": "marine_debris", "confidence": 0.91, "bbox": [350.0, 110.0, 560.0, 320.0], "area_ratio": 0.075 },
+      { "class_name": "marine_debris", "confidence": 0.89, "bbox": [200.0, 340.0, 420.0, 490.0], "area_ratio": 0.055 },
+      { "class_name": "marine_debris", "confidence": 0.93, "bbox": [440.0, 300.0, 610.0, 470.0], "area_ratio": 0.06 }
+    ],
+    "summary": {
+      "dominant_category": "marine_debris",
+      "total_detections": 4,
+      "severity": "High",
+      "severity_score": 71,
+      "average_confidence": 0.918,
+      "max_confidence": 0.94,
+      "estimated_coverage": 0.28
+    }
+  },
+  {
+    "observation_id": "OBS-2026-09-008",
+    "status": "completed",
+    "image_url": "https://images.unsplash.com/photo-1621451537084-482c73073a0f?auto=format&fit=crop&w=800&q=80",
+    "observation_date": "2026-09-15T10:30:00Z",
+    "location": {
+      "name": "Karwar Coast - Port Jetty Hotspot",
+      "latitude": 14.8142,
+      "longitude": 74.1351,
+      "observation_date": "2026-09-15T10:30:00Z"
+    },
+    "detections": [
+      { "class_name": "marine_debris", "confidence": 0.96, "bbox": [30.0, 40.0, 360.0, 380.0], "area_ratio": 0.16 },
+      { "class_name": "marine_debris", "confidence": 0.93, "bbox": [380.0, 70.0, 600.0, 340.0], "area_ratio": 0.12 },
+      { "class_name": "marine_debris", "confidence": 0.91, "bbox": [160.0, 360.0, 480.0, 560.0], "area_ratio": 0.11 },
+      { "class_name": "marine_debris", "confidence": 0.88, "bbox": [490.0, 330.0, 620.0, 490.0], "area_ratio": 0.04 },
+      { "class_name": "marine_debris", "confidence": 0.89, "bbox": [50.0, 400.0, 220.0, 530.0], "area_ratio": 0.03 }
+    ],
+    "summary": {
+      "dominant_category": "marine_debris",
+      "total_detections": 5,
+      "severity": "Critical",
+      "severity_score": 86,
+      "average_confidence": 0.914,
+      "max_confidence": 0.96,
+      "estimated_coverage": 0.46
+    }
+  }
+]

@@ -1,0 +1,66 @@
+{
+  "region": "Karnataka Coastal Environmental Monitoring Corridor",
+  "last_updated": "2026-09-15T10:30:00Z",
+  "locations": [
+    {
+      "location": "Karwar Coast - Port Jetty Cluster",
+      "latitude": 14.8142,
+      "longitude": 74.1351,
+      "analysis_count": 10,
+      "total_detections": 37,
+      "average_score": 71,
+      "severity": "High",
+      "is_hotspot": true,
+      "risk_rank": 1,
+      "dominant_category": "marine_debris"
+    },
+    {
+      "location": "Panambur Beach & Commercial Harbour",
+      "latitude": 12.9467,
+      "longitude": 74.8078,
+      "analysis_count": 8,
+      "total_detections": 28,
+      "average_score": 64,
+      "severity": "High",
+      "is_hotspot": true,
+      "risk_rank": 2,
+      "dominant_category": "marine_debris"
+    },
+    {
+      "location": "Malpe Beach & St. Marys Terminal",
+      "latitude": 13.3524,
+      "longitude": 74.7042,
+      "analysis_count": 7,
+      "total_detections": 16,
+      "average_score": 48,
+      "severity": "Moderate",
+      "is_hotspot": false,
+      "risk_rank": 3,
+      "dominant_category": "marine_debris"
+    },
+    {
+      "location": "Gokarna Main Beach & Kudle Bay",
+      "latitude": 14.5426,
+      "longitude": 74.3164,
+      "analysis_count": 6,
+      "total_detections": 9,
+      "average_score": 32,
+      "severity": "Moderate",
+      "is_hotspot": false,
+      "risk_rank": 4,
+      "dominant_category": "marine_debris"
+    },
+    {
+      "location": "Mangalore Ullal Coastal Sanctuary",
+      "latitude": 12.8085,
+      "longitude": 74.8488,
+      "analysis_count": 5,
+      "total_detections": 2,
+      "average_score": 14,
+      "severity": "Low",
+      "is_hotspot": false,
+      "risk_rank": 5,
+      "dominant_category": "marine_debris"
+    }
+  ]
+}

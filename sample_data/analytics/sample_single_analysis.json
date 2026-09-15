@@ -1,0 +1,36 @@
+{
+  "analysis_id": "ANL-0001",
+  "status": "completed",
+  "image_url": "/uploads/ANL-0001.jpg",
+  "timestamp": "2026-09-15T09:30:00Z",
+  "location": {
+    "name": "Karwar Coast - Rabindranath Tagore Beach",
+    "latitude": 14.8092,
+    "longitude": 74.1294,
+    "observation_date": "2026-09-15T09:30:00Z"
+  },
+  "detections": [
+    {
+      "class_name": "marine_debris",
+      "confidence": 0.91,
+      "bbox": [120.0, 80.0, 340.0, 260.0],
+      "area_ratio": 0.042
+    },
+    {
+      "class_name": "marine_debris",
+      "confidence": 0.84,
+      "bbox": [410.0, 310.0, 520.0, 430.0],
+      "area_ratio": 0.028
+    }
+  ],
+  "summary": {
+    "dominant_category": "marine_debris",
+    "total_detections": 2,
+    "severity": "Moderate",
+    "severity_score": 46,
+    "average_confidence": 0.875,
+    "max_confidence": 0.91,
+    "estimated_coverage": 0.07
+  },
+  "report_url": "/api/v1/reports/ANL-0001"
+}

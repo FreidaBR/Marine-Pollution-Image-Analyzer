@@ -1,0 +1,219 @@
+{
+  "survey_id": "SRV-2026-09-001",
+  "survey_name": "Karwar Coastal Transect Survey",
+  "date": "2026-09-15T10:00:00Z",
+  "total_images": 10,
+  "affected_images": 7,
+  "clean_images": 3,
+  "total_detections": 37,
+  "average_detections_per_image": 3.7,
+  "average_confidence": 0.84,
+  "highest_confidence": 0.96,
+  "average_score": 68,
+  "overall_severity": "High",
+  "dominant_category": "marine_debris",
+  "severity_distribution": {
+    "Clean": 3,
+    "Low": 2,
+    "Moderate": 2,
+    "High": 2,
+    "Critical": 1
+  },
+  "location_summary": {
+    "name": "Karwar Shoreline Sector 4",
+    "latitude": 14.8115,
+    "longitude": 74.1322,
+    "georeferenced_images": 10
+  },
+  "images": [
+    {
+      "analysis_id": "SRV-IMG-01",
+      "status": "completed",
+      "image_url": "/uploads/survey_01.jpg",
+      "timestamp": "2026-09-15T10:02:10Z",
+      "location": { "name": "Karwar Station A", "latitude": 14.8080, "longitude": 74.1280 },
+      "detections": [],
+      "summary": {
+        "dominant_category": "None",
+        "total_detections": 0,
+        "severity": "Clean",
+        "severity_score": 0,
+        "average_confidence": 0.0,
+        "max_confidence": 0.0
+      }
+    },
+    {
+      "analysis_id": "SRV-IMG-02",
+      "status": "completed",
+      "image_url": "/uploads/survey_02.jpg",
+      "timestamp": "2026-09-15T10:04:15Z",
+      "location": { "name": "Karwar Station B", "latitude": 14.8091, "longitude": 74.1292 },
+      "detections": [
+        { "class_name": "marine_debris", "confidence": 0.72, "bbox": [150.0, 200.0, 240.0, 280.0], "area_ratio": 0.015 }
+      ],
+      "summary": {
+        "dominant_category": "marine_debris",
+        "total_detections": 1,
+        "severity": "Low",
+        "severity_score": 24,
+        "average_confidence": 0.72,
+        "max_confidence": 0.72
+      }
+    },
+    {
+      "analysis_id": "SRV-IMG-03",
+      "status": "completed",
+      "image_url": "/uploads/survey_03.jpg",
+      "timestamp": "2026-09-15T10:06:20Z",
+      "location": { "name": "Karwar Station C", "latitude": 14.8105, "longitude": 74.1308 },
+      "detections": [
+        { "class_name": "marine_debris", "confidence": 0.88, "bbox": [100.0, 80.0, 250.0, 220.0], "area_ratio": 0.035 },
+        { "class_name": "marine_debris", "confidence": 0.81, "bbox": [320.0, 190.0, 480.0, 310.0], "area_ratio": 0.032 }
+      ],
+      "summary": {
+        "dominant_category": "marine_debris",
+        "total_detections": 2,
+        "severity": "Moderate",
+        "severity_score": 45,
+        "average_confidence": 0.845,
+        "max_confidence": 0.88
+      }
+    },
+    {
+      "analysis_id": "SRV-IMG-04",
+      "status": "completed",
+      "image_url": "/uploads/survey_04.jpg",
+      "timestamp": "2026-09-15T10:08:45Z",
+      "location": { "name": "Karwar Station D", "latitude": 14.8120, "longitude": 74.1325 },
+      "detections": [],
+      "summary": {
+        "dominant_category": "None",
+        "total_detections": 0,
+        "severity": "Clean",
+        "severity_score": 0,
+        "average_confidence": 0.0,
+        "max_confidence": 0.0
+      }
+    },
+    {
+      "analysis_id": "SRV-IMG-05",
+      "status": "completed",
+      "image_url": "/uploads/survey_05.jpg",
+      "timestamp": "2026-09-15T10:11:00Z",
+      "location": { "name": "Karwar Station E - Estuary Outlet", "latitude": 14.8135, "longitude": 74.1340 },
+      "detections": [
+        { "class_name": "marine_debris", "confidence": 0.94, "bbox": [50.0, 40.0, 300.0, 350.0], "area_ratio": 0.12 },
+        { "class_name": "marine_debris", "confidence": 0.91, "bbox": [320.0, 110.0, 520.0, 320.0], "area_ratio": 0.08 },
+        { "class_name": "marine_debris", "confidence": 0.89, "bbox": [200.0, 340.0, 410.0, 490.0], "area_ratio": 0.06 },
+        { "class_name": "marine_debris", "confidence": 0.92, "bbox": [450.0, 310.0, 600.0, 470.0], "area_ratio": 0.05 },
+        { "class_name": "marine_debris", "confidence": 0.87, "bbox": [80.0, 360.0, 210.0, 470.0], "area_ratio": 0.03 }
+      ],
+      "summary": {
+        "dominant_category": "marine_debris",
+        "total_detections": 5,
+        "severity": "High",
+        "severity_score": 78,
+        "average_confidence": 0.906,
+        "max_confidence": 0.94
+      }
+    },
+    {
+      "analysis_id": "SRV-IMG-06",
+      "status": "completed",
+      "image_url": "/uploads/survey_06.jpg",
+      "timestamp": "2026-09-15T10:13:30Z",
+      "location": { "name": "Karwar Station F - Port Jetty Cluster", "latitude": 14.8142, "longitude": 74.1351 },
+      "detections": [
+        { "class_name": "marine_debris", "confidence": 0.96, "bbox": [20.0, 20.0, 450.0, 400.0], "area_ratio": 0.22 },
+        { "class_name": "marine_debris", "confidence": 0.93, "bbox": [420.0, 50.0, 620.0, 350.0], "area_ratio": 0.11 },
+        { "class_name": "marine_debris", "confidence": 0.92, "bbox": [150.0, 380.0, 500.0, 580.0], "area_ratio": 0.14 },
+        { "class_name": "marine_debris", "confidence": 0.89, "bbox": [30.0, 410.0, 220.0, 550.0], "area_ratio": 0.05 },
+        { "class_name": "marine_debris", "confidence": 0.95, "bbox": [480.0, 340.0, 630.0, 520.0], "area_ratio": 0.07 },
+        { "class_name": "marine_debris", "confidence": 0.88, "bbox": [250.0, 200.0, 390.0, 330.0], "area_ratio": 0.04 },
+        { "class_name": "marine_debris", "confidence": 0.86, "bbox": [510.0, 180.0, 600.0, 280.0], "area_ratio": 0.02 },
+        { "class_name": "marine_debris", "confidence": 0.90, "bbox": [110.0, 180.0, 240.0, 310.0], "area_ratio": 0.03 }
+      ],
+      "summary": {
+        "dominant_category": "marine_debris",
+        "total_detections": 8,
+        "severity": "Critical",
+        "severity_score": 92,
+        "average_confidence": 0.911,
+        "max_confidence": 0.96
+      }
+    },
+    {
+      "analysis_id": "SRV-IMG-07",
+      "status": "completed",
+      "image_url": "/uploads/survey_07.jpg",
+      "timestamp": "2026-09-15T10:16:00Z",
+      "location": { "name": "Karwar Station G", "latitude": 14.8155, "longitude": 74.1362 },
+      "detections": [
+        { "class_name": "marine_debris", "confidence": 0.79, "bbox": [180.0, 220.0, 310.0, 340.0], "area_ratio": 0.025 }
+      ],
+      "summary": {
+        "dominant_category": "marine_debris",
+        "total_detections": 1,
+        "severity": "Low",
+        "severity_score": 28,
+        "average_confidence": 0.79,
+        "max_confidence": 0.79
+      }
+    },
+    {
+      "analysis_id": "SRV-IMG-08",
+      "status": "completed",
+      "image_url": "/uploads/survey_08.jpg",
+      "timestamp": "2026-09-15T10:18:20Z",
+      "location": { "name": "Karwar Station H", "latitude": 14.8168, "longitude": 74.1375 },
+      "detections": [],
+      "summary": {
+        "dominant_category": "None",
+        "total_detections": 0,
+        "severity": "Clean",
+        "severity_score": 0,
+        "average_confidence": 0.0,
+        "max_confidence": 0.0
+      }
+    },
+    {
+      "analysis_id": "SRV-IMG-09",
+      "status": "completed",
+      "image_url": "/uploads/survey_09.jpg",
+      "timestamp": "2026-09-15T10:20:40Z",
+      "location": { "name": "Karwar Station I", "latitude": 14.8180, "longitude": 74.1388 },
+      "detections": [
+        { "class_name": "marine_debris", "confidence": 0.85, "bbox": [120.0, 140.0, 290.0, 310.0], "area_ratio": 0.04 },
+        { "class_name": "marine_debris", "confidence": 0.82, "bbox": [340.0, 200.0, 480.0, 320.0], "area_ratio": 0.03 }
+      ],
+      "summary": {
+        "dominant_category": "marine_debris",
+        "total_detections": 2,
+        "severity": "Moderate",
+        "severity_score": 48,
+        "average_confidence": 0.835,
+        "max_confidence": 0.85
+      }
+    },
+    {
+      "analysis_id": "SRV-IMG-10",
+      "status": "completed",
+      "image_url": "/uploads/survey_10.jpg",
+      "timestamp": "2026-09-15T10:23:10Z",
+      "location": { "name": "Karwar Station J", "latitude": 14.8195, "longitude": 74.1402 },
+      "detections": [
+        { "class_name": "marine_debris", "confidence": 0.92, "bbox": [80.0, 70.0, 340.0, 310.0], "area_ratio": 0.09 },
+        { "class_name": "marine_debris", "confidence": 0.89, "bbox": [380.0, 160.0, 560.0, 360.0], "area_ratio": 0.07 },
+        { "class_name": "marine_debris", "confidence": 0.88, "bbox": [150.0, 320.0, 360.0, 480.0], "area_ratio": 0.06 }
+      ],
+      "summary": {
+        "dominant_category": "marine_debris",
+        "total_detections": 3,
+        "severity": "High",
+        "severity_score": 69,
+        "average_confidence": 0.896,
+        "max_confidence": 0.92
+      }
+    }
+  ]
+}
