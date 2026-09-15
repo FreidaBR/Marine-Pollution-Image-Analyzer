@@ -41,7 +41,8 @@ def analyze_image(
         contents = validate_upload(image, settings.max_upload_size_mb)
     except UploadValidationError as exc:
         raise HTTPException(
-            status_code=400, detail={"code": exc.code, "message": exc.message}
+            status_code=exc.status_code,
+            detail={"code": exc.code, "message": exc.message},
         ) from exc
 
     image_row = Image(
@@ -78,7 +79,14 @@ def analyze_image(
 
     provider = get_inference_provider(settings)
     stored_full_path = str(UPLOAD_DIR / stored_filename)
-    detections = provider.predict(stored_full_path, settings.ai_confidence_threshold)
+    try:
+        detections = provider.predict(stored_full_path, settings.ai_confidence_threshold)
+    except ValueError as exc:
+        raise HTTPException(status_code=400, detail=str(exc)) from exc
+    except FileNotFoundError as exc:
+        raise HTTPException(status_code=503, detail="Model unavailable") from exc
+    except Exception as exc:
+        raise HTTPException(status_code=500, detail="Model inference failed") from exc
     severity = calculate_severity(detections)
 
     analysis.dominant_category = dominant_category(detections)

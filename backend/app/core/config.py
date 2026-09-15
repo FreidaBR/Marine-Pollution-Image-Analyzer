@@ -7,8 +7,6 @@ mock -> real inference, by changing config rather than code.
 """
 
 from functools import lru_cache
-from pathlib import Path
-
 from pydantic_settings import BaseSettings, SettingsConfigDict
 
 
@@ -27,13 +25,8 @@ class Settings(BaseSettings):
 
     # AI
     ai_confidence_threshold: float = 0.40
-    ai_mode: str = "real"  # "mock" or "real"
-    model_path: str = str(
-        Path(__file__).resolve().parents[3]
-        / "ai_service"
-        / "model"
-        / "plastic_trash_detector.pt"
-    )
+    ai_mode: str = "mock"  # "mock" or "real"
+    model_path: str = ""
 
     # Uploads
     max_upload_size_mb: int = 10
