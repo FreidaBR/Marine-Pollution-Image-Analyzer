@@ -7,6 +7,14 @@
     "dev": "vite",
     "build": "vite build",
     "preview": "vite preview",
-    "test": "echo \"Frontend tests not configured yet\""
+    "test": "echo \"Frontend tests not configured yet\"",
+    "lint": "cd .. && eslint --config eslint.config.js frontend",
+    "format": "cd .. && prettier --config .prettierrc.json --ignore-path .prettierignore --write frontend",
+    "format:check": "cd .. && prettier --config .prettierrc.json --ignore-path .prettierignore --check frontend"
+  },
+  "devDependencies": {
+    "eslint": "^9.17.0",
+    "prettier": "^3.4.2",
+    "vite": "^6.0.7"
   }
 }

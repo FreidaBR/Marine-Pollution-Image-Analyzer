@@ -1,0 +1,6 @@
+# Shared development/CI tooling for all Python services (backend, ai_service, reporting).
+# Install alongside a service's requirements.txt, e.g.:
+#   pip install -r backend/requirements.txt -r requirements-dev.txt
+ruff==0.8.4
+pytest==8.3.4
+pip-audit==2.7.3
