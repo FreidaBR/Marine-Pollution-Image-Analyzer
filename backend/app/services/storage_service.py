@@ -16,14 +16,15 @@ ALLOWED_CONTENT_TYPES = {"image/jpeg", "image/png", "image/webp"}
 
 
 class UploadValidationError(ValueError):
-    def __init__(self, code: str, message: str) -> None:
+    def __init__(self, code: str, message: str, status_code: int = 400) -> None:
         super().__init__(message)
         self.code = code
         self.message = message
+        self.status_code = status_code
 
 
 def validate_upload(file: UploadFile, max_size_mb: int) -> bytes:
-    """Reads and validates the uploaded file. Returns its raw bytes."""
+    """Read a bounded upload and return its validated raw bytes."""
     if file.content_type not in ALLOWED_CONTENT_TYPES:
         raise UploadValidationError(
             "invalid_file_type",
@@ -31,13 +32,29 @@ def validate_upload(file: UploadFile, max_size_mb: int) -> bytes:
             f"Allowed: {', '.join(sorted(ALLOWED_CONTENT_TYPES))}.",
         )
 
-    contents = file.file.read()
     max_bytes = max_size_mb * 1024 * 1024
-    if len(contents) > max_bytes:
+    declared_size = file.size
+    if declared_size is not None and declared_size > max_bytes:
         raise UploadValidationError(
             "file_too_large",
             f"File exceeds the {max_size_mb}MB upload limit.",
+            status_code=413,
         )
+
+    chunks: list[bytes] = []
+    total_size = 0
+    chunk_size = 1024 * 1024
+    while chunk := file.file.read(chunk_size):
+        total_size += len(chunk)
+        if total_size > max_bytes:
+            raise UploadValidationError(
+                "file_too_large",
+                f"File exceeds the {max_size_mb}MB upload limit.",
+                status_code=413,
+            )
+        chunks.append(chunk)
+
+    contents = b"".join(chunks)
     if len(contents) == 0:
         raise UploadValidationError("empty_file", "Uploaded file is empty.")
 

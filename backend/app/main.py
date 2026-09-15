@@ -7,7 +7,7 @@ Run locally with:
 from collections.abc import AsyncIterator
 from contextlib import asynccontextmanager
 
-from fastapi import FastAPI, HTTPException
+from fastapi import FastAPI, HTTPException, Request
 from fastapi.exceptions import RequestValidationError
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import JSONResponse
@@ -39,6 +39,41 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
+
+
+@app.middleware("http")
+async def enforce_request_body_limit(request: Request, call_next):
+    """Reject oversized requests before FastAPI parses multipart form data."""
+    content_length = request.headers.get("content-length")
+    if content_length is not None:
+        try:
+            request_size = int(content_length)
+        except ValueError:
+            request_size = 0
+        max_request_size = settings.max_upload_size_mb * 1024 * 1024
+        if request_size > max_request_size:
+            message = f"Request exceeds the {settings.max_upload_size_mb}MB upload limit."
+            return JSONResponse(
+                status_code=413,
+                content={
+                    "error": {
+                        "code": "file_too_large",
+                        "message": message,
+                    }
+                },
+            )
+    return await call_next(request)
+
+
+@app.get("/")
+def root() -> dict[str, str]:
+    return {
+        "message": "Marine Pollution Analyzer API is running",
+        "docs": "/docs",
+        "health": "/health",
+        "analyze": "/api/v1/analyze",
+    }
+
 
 app.include_router(api_router)
 

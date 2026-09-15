@@ -7,7 +7,6 @@ mock -> real inference, by changing config rather than code.
 """
 
 from functools import lru_cache
-
 from pydantic_settings import BaseSettings, SettingsConfigDict
 
 
