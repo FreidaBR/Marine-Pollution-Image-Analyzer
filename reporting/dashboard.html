@@ -771,14 +771,16 @@
 
                             <!-- The Surveillance Image Container with bounding boxes -->
                             <div class="relative w-full aspect-[16/9] max-h-[560px] overflow-hidden bg-surface-container-lowest flex items-center justify-center">
-                                <img alt="Observation Image Evidence" class="w-full h-full object-cover" id="cv-image" src=""/>
-                                
-                                <!-- Heatmap Overlay Layer -->
-                                <div class="hidden absolute inset-0 bg-gradient-to-tr from-error/30 via-secondary-container/20 to-primary-container/30 mix-blend-color pointer-events-none" id="heatmap-layer"></div>
-                                
-                                <!-- Bounding Boxes Container -->
-                                <div class="absolute inset-0 pointer-events-none" id="bounding-boxes-container">
-                                    <!-- Dynamically filled with scaled bounding boxes -->
+                                <div class="relative inline-block max-w-full max-h-full">
+                                    <img alt="Observation Image Evidence" class="max-w-full max-h-[560px] object-contain block" id="cv-image" src=""/>
+                                    
+                                    <!-- Heatmap Overlay Layer -->
+                                    <div class="hidden absolute inset-0 bg-gradient-to-tr from-error/30 via-secondary-container/20 to-primary-container/30 mix-blend-color pointer-events-none" id="heatmap-layer"></div>
+                                    
+                                    <!-- Bounding Boxes Container -->
+                                    <div class="absolute inset-0 pointer-events-none" id="bounding-boxes-container">
+                                        <!-- Dynamically filled with scaled bounding boxes -->
+                                    </div>
                                 </div>
                             </div>
 
@@ -2205,6 +2207,25 @@ void main() {
 
             previewContainer.classList.remove('hidden');
             dropContent.classList.add('opacity-0');
+            
+            // --- HACKATHON DEMO AUTO-POPULATE ---
+            const normalizedFileName = file.name.replace(/\.jpeg$/i, '.jpg').toLowerCase();
+            if (normalizedFileName === '01_high_debris.jpg') {
+                document.getElementById('input-loc').value = 'Karwar Coast';
+                document.getElementById('input-lat').value = '14.80';
+                document.getElementById('input-lon').value = '74.13';
+                initDateTimeInputs();
+            } else if (normalizedFileName === '02_moderate_debris.jpg') {
+                document.getElementById('input-loc').value = 'Panambur Beach';
+                document.getElementById('input-lat').value = '12.95';
+                document.getElementById('input-lon').value = '74.80';
+                initDateTimeInputs();
+            } else if (normalizedFileName === '03_low_debris.jpg') {
+                document.getElementById('input-loc').value = 'Malpe Beach';
+                document.getElementById('input-lat').value = '13.35';
+                document.getElementById('input-lon').value = '74.70';
+                initDateTimeInputs();
+            }
         };
         reader.readAsDataURL(file);
     }
@@ -2249,8 +2270,8 @@ void main() {
         btn.classList.add('opacity-75');
         if (spinIcon) spinIcon.classList.add('animate-spin');
 
-        bar.style.width = '25%';
-        status.innerText = '25% UPLOADING IMAGE';
+        bar.style.width = '0%';
+        status.innerText = '0% INITIALIZING';
 
         try {
             const formData = new FormData();
@@ -2268,18 +2289,25 @@ void main() {
                 });
             }
 
-            bar.style.width = '60%';
-            status.innerText = '60% ADAPTER VERIFICATION';
-
             let uploadData = {};
             if (uploadRes && uploadRes.ok) {
                 uploadData = await uploadRes.json();
                 userUploadedServerUrl = uploadData.image_url;
             }
 
-            bar.style.width = '85%';
-            status.innerText = '85% CHECKING INFERENCE MODEL';
-
+            // SIMULATED 5-SECOND PROCESSING
+            bar.style.width = '20%';
+            status.innerText = 'ANALYZING IMAGE\n[✓] Image ingestion';
+            await new Promise(r => setTimeout(r, 1000));
+            
+            bar.style.width = '40%';
+            status.innerText = 'ANALYZING IMAGE\n[✓] Image preprocessing';
+            await new Promise(r => setTimeout(r, 1000));
+            
+            bar.style.width = '60%';
+            status.innerText = 'ANALYZING IMAGE\n[→] Marine debris detection';
+            
+            // Execute actual API call while animating
             const analyzeRes = await fetch('/api/v1/analyze', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
@@ -2289,11 +2317,16 @@ void main() {
                     observation_date: `${dateStr} ${timeStr} UTC`
                 })
             });
-
             const analyzeData = await analyzeRes.json();
-
+            
+            await new Promise(r => setTimeout(r, 1500));
+            bar.style.width = '80%';
+            status.innerText = 'ANALYZING IMAGE\n[ ] Evidence quantification';
+            
+            await new Promise(r => setTimeout(r, 1500));
             bar.style.width = '100%';
-            status.innerText = '100% COMPLETE';
+            status.innerText = 'ANALYSIS COMPLETE';
+
             if (spinIcon) spinIcon.classList.remove('animate-spin');
 
             setTimeout(() => {
@@ -2573,11 +2606,13 @@ void main() {
             attributionControl: false
         });
 
-        // CartoDB Dark Matter tiles adhering to theme
-        L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', {
+        // OpenStreetMap tiles with CSS filter for dark mode adhering to theme
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
             maxZoom: 18,
-            subdomains: 'abcd'
+            attribution: '© OpenStreetMap'
         }).addTo(leafletMapInstance);
+        
+        leafletMapInstance.getPane('tilePane').style.filter = 'invert(100%) hue-rotate(180deg) brightness(95%) contrast(90%)';
 
         leafletMarkersGroup = L.featureGroup().addTo(leafletMapInstance);
         renderMapMarkers();

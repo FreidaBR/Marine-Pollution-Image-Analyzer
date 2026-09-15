@@ -66,7 +66,8 @@ def build_analysis_report(
         recommendations=recs,
         disclaimer=(
             "This analysis identifies visible marine-debris indicators from the submitted image. "
-            "It is not a laboratory or chemical contamination assessment."
+            "It is not a laboratory or chemical contamination assessment. "
+            "(Generated via Controlled Hackathon Demo Inference Mode)"
         ),
     )
 
