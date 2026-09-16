@@ -19,10 +19,10 @@ from reporting.schemas import SeverityLevel, Detection
 SEVERITY_CONFIG: Dict[str, Any] = {
     # Severity level threshold boundaries (inclusive lower bound)
     "thresholds": {
-        "critical": 85,
-        "high": 60,
-        "moderate": 30,
-        "low": 1,
+        "critical": 81,
+        "high": 61,
+        "moderate": 36,
+        "low": 16,
         "clean": 0,
     },
     # Maximum points allocated to each sub-component (sum = 100)

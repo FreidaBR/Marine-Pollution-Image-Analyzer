@@ -66,6 +66,11 @@ class AnalysisSummary(BaseModel):
     average_confidence: float = Field(default=0.0, ge=0.0, le=1.0)
     max_confidence: float = Field(default=0.0, ge=0.0, le=1.0)
     estimated_coverage: Optional[float] = Field(default=None, ge=0.0, le=1.0)
+    waste_composition: Dict[str, float] = Field(default_factory=dict, description="Percentage makeup of detected waste classes")
+    ecological_risk: str = Field(default="Unknown", description="Assessed risk tier (Low, Moderate, High, Critical)")
+    ecological_concerns: List[str] = Field(default_factory=list, description="Primary environmental concerns")
+    ecological_reasoning: str = Field(default="", description="Rule-based reasoning for the risk assessment")
+
 
 
 class AnalysisResult(BaseModel):

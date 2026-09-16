@@ -19,6 +19,53 @@ from reporting.schemas import (
 from reporting.severity import calculate_severity, normalize_detection
 
 
+def calculate_ecological_impact(detections: List[Detection], severity: SeverityLevel, dominant_cat: str) -> Dict[str, Any]:
+    if not detections:
+        return {
+            "waste_composition": {},
+            "ecological_risk": "CLEAN",
+            "ecological_concerns": [],
+            "ecological_reasoning": "No visible pollution detected. Ecological risk is minimal."
+        }
+    
+    counts = Counter(d.class_name for d in detections)
+    total = sum(counts.values())
+    composition = {k: round((v / total) * 100, 1) for k, v in counts.items()}
+    
+    risk_mapping = {
+        SeverityLevel.CLEAN: "CLEAN",
+        SeverityLevel.LOW: "LOW",
+        SeverityLevel.MODERATE: "MODERATE",
+        SeverityLevel.HIGH: "HIGH",
+        SeverityLevel.CRITICAL: "CRITICAL",
+    }
+    eco_risk = risk_mapping.get(severity, "UNKNOWN")
+    
+    cat_lower = dominant_cat.lower()
+    if "oil" in cat_lower or "sheen" in cat_lower:
+        concerns = ["water-surface contamination", "potential impact on marine organisms", "shoreline/habitat contamination"]
+        reasoning = f"{eco_risk.capitalize()} visible oil-spill-like concentration combined with elevated pollution severity."
+    elif "fishing" in cat_lower:
+        concerns = ["entanglement risk", "wildlife interaction", "habitat disturbance"]
+        reasoning = f"{eco_risk.capitalize()} visible fishing-related waste concentration combined with elevated pollution severity."
+    elif "cloth" in cat_lower or "textile" in cat_lower:
+        concerns = ["entanglement", "ingestion", "persistent shoreline waste"]
+        reasoning = f"{eco_risk.capitalize()} visible cloth/textile concentration combined with elevated pollution severity."
+    elif "metal" in cat_lower:
+        concerns = ["physical hazard", "habitat contamination", "potential degradation/corrosion-related contamination"]
+        reasoning = f"{eco_risk.capitalize()} visible metal concentration combined with elevated pollution severity."
+    else:
+        concerns = ["ingestion risk", "entanglement risk", "habitat contamination", "potential water-quality impact"]
+        reasoning = f"{eco_risk.capitalize()} visible plastic/debris concentration combined with elevated pollution severity."
+
+    return {
+        "waste_composition": composition,
+        "ecological_risk": eco_risk,
+        "ecological_concerns": concerns,
+        "ecological_reasoning": reasoning
+    }
+
+
 def analyze_single_result(
     analysis_id: str,
     detections: List[Any],
@@ -40,6 +87,9 @@ def analyze_single_result(
     )
 
     dominant_cat = identify_dominant_category(normalized_dets)
+    
+    # Calculate Ecological Impact
+    eco_impact = calculate_ecological_impact(normalized_dets, severity_level, dominant_cat)
 
     summary = AnalysisSummary(
         dominant_category=dominant_cat,
@@ -49,6 +99,10 @@ def analyze_single_result(
         average_confidence=breakdown.get("average_confidence", 0.0),
         max_confidence=breakdown.get("max_confidence", 0.0),
         estimated_coverage=breakdown.get("estimated_coverage"),
+        waste_composition=eco_impact["waste_composition"],
+        ecological_risk=eco_impact["ecological_risk"],
+        ecological_concerns=eco_impact["ecological_concerns"],
+        ecological_reasoning=eco_impact["ecological_reasoning"],
     )
 
     return AnalysisResult(
@@ -65,11 +119,14 @@ def analyze_single_result(
 
 
 def identify_dominant_category(detections: List[Detection]) -> str:
-    """Finds the most frequently detected pollution class among detections."""
+    """Finds the unique detected pollution classes among detections."""
     if not detections:
         return "None"
-    counts = Counter(d.class_name for d in detections)
-    return counts.most_common(1)[0][0]
+    unique_classes = []
+    for d in detections:
+        if d.class_name not in unique_classes:
+            unique_classes.append(d.class_name)
+    return " + ".join(unique_classes)
 
 
 def calculate_severity_distribution(analyses: List[AnalysisResult]) -> Dict[str, int]:

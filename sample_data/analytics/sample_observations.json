@@ -1,207 +1,177 @@
 [
   {
-    "observation_id": "OBS-2026-09-001",
+    "observation_id": "DEMO-001",
     "status": "completed",
-    "image_url": "https://images.unsplash.com/photo-1621451537084-482c73073a0f?auto=format&fit=crop&w=800&q=80",
-    "observation_date": "2026-09-01T09:15:00Z",
+    "image_url": "/uploads/01_clean_water.jpeg",
+    "observation_date": "2026-09-15T10:00:00Z",
     "location": {
-      "name": "Karwar Coast - Rabindranath Tagore Beach",
-      "latitude": 14.8092,
-      "longitude": 74.1294,
-      "observation_date": "2026-09-01T09:15:00Z"
-    },
-    "detections": [
-      { "class_name": "marine_debris", "confidence": 0.74, "bbox": [140.0, 180.0, 260.0, 270.0], "area_ratio": 0.018 },
-      { "class_name": "marine_debris", "confidence": 0.68, "bbox": [330.0, 220.0, 420.0, 310.0], "area_ratio": 0.012 }
-    ],
-    "summary": {
-      "dominant_category": "marine_debris",
-      "total_detections": 2,
-      "severity": "Moderate",
-      "severity_score": 38,
-      "average_confidence": 0.71,
-      "max_confidence": 0.74,
-      "estimated_coverage": 0.03
-    }
-  },
-  {
-    "observation_id": "OBS-2026-09-002",
-    "status": "completed",
-    "image_url": "https://images.unsplash.com/photo-1618477461853-cf6ed80faba5?auto=format&fit=crop&w=800&q=80",
-    "observation_date": "2026-09-03T11:30:00Z",
-    "location": {
-      "name": "Mangalore Ullal Coastal Sanctuary",
-      "latitude": 12.8085,
-      "longitude": 74.8488,
-      "observation_date": "2026-09-03T11:30:00Z"
+      "name": "Gokarna Coast",
+      "latitude": 14.5479,
+      "longitude": 74.3188,
+      "observation_date": "2026-09-15T10:00:00Z"
     },
     "detections": [],
     "summary": {
       "dominant_category": "None",
       "total_detections": 0,
       "severity": "Clean",
-      "severity_score": 0,
+      "severity_score": 10,
       "average_confidence": 0.0,
       "max_confidence": 0.0,
-      "estimated_coverage": 0.0
+      "estimated_coverage": 0.0,
+      "waste_composition": {},
+      "ecological_risk": "CLEAN",
+      "ecological_concerns": [],
+      "ecological_reasoning": "No visible pollution detected. Ecological risk is minimal."
     }
   },
   {
-    "observation_id": "OBS-2026-09-003",
+    "observation_id": "DEMO-002",
     "status": "completed",
-    "image_url": "https://images.unsplash.com/photo-1544551763-46a013bb70d5?auto=format&fit=crop&w=800&q=80",
-    "observation_date": "2026-09-06T14:00:00Z",
+    "image_url": "/uploads/02_low_plastic.jpeg",
+    "observation_date": "2026-09-15T10:05:00Z",
     "location": {
-      "name": "Gokarna Main Beach & Kudle Bay",
-      "latitude": 14.5426,
-      "longitude": 74.3164,
-      "observation_date": "2026-09-06T14:00:00Z"
+      "name": "Malpe Coast",
+      "latitude": 13.3310,
+      "longitude": 74.7467,
+      "observation_date": "2026-09-15T10:05:00Z"
     },
     "detections": [
-      { "class_name": "marine_debris", "confidence": 0.78, "bbox": [190.0, 240.0, 310.0, 330.0], "area_ratio": 0.015 }
+      {"class_name": "Plastic", "confidence": 0.85, "bbox": [200, 200, 250, 250], "area_ratio": 0.02},
+      {"class_name": "Plastic", "confidence": 0.78, "bbox": [800, 400, 840, 450], "area_ratio": 0.01},
+      {"class_name": "Plastic", "confidence": 0.82, "bbox": [600, 600, 620, 650], "area_ratio": 0.01}
     ],
     "summary": {
-      "dominant_category": "marine_debris",
-      "total_detections": 1,
+      "dominant_category": "Plastic",
+      "total_detections": 3,
       "severity": "Low",
-      "severity_score": 22,
-      "average_confidence": 0.78,
-      "max_confidence": 0.78,
-      "estimated_coverage": 0.015
+      "severity_score": 25,
+      "average_confidence": 0.81,
+      "max_confidence": 0.85,
+      "estimated_coverage": 0.04,
+      "waste_composition": {"Plastic": 100.0},
+      "ecological_risk": "LOW",
+      "ecological_concerns": ["ingestion risk", "entanglement risk", "habitat contamination", "potential water-quality impact"],
+      "ecological_reasoning": "Low visible plastic/debris concentration combined with elevated pollution severity."
     }
   },
   {
-    "observation_id": "OBS-2026-09-004",
+    "observation_id": "DEMO-003",
     "status": "completed",
-    "image_url": "https://images.unsplash.com/photo-1530587191325-3db32d826c18?auto=format&fit=crop&w=800&q=80",
-    "observation_date": "2026-09-08T10:45:00Z",
+    "image_url": "/uploads/03_moderate_mixed_debris.jpeg",
+    "observation_date": "2026-09-15T10:10:00Z",
     "location": {
-      "name": "Malpe Beach & St. Marys Terminal",
-      "latitude": 13.3524,
-      "longitude": 74.7042,
-      "observation_date": "2026-09-08T10:45:00Z"
+      "name": "Panambur Beach",
+      "latitude": 12.9784,
+      "longitude": 74.8083,
+      "observation_date": "2026-09-15T10:10:00Z"
     },
     "detections": [
-      { "class_name": "marine_debris", "confidence": 0.86, "bbox": [110.0, 140.0, 270.0, 290.0], "area_ratio": 0.035 },
-      { "class_name": "marine_debris", "confidence": 0.81, "bbox": [340.0, 200.0, 480.0, 320.0], "area_ratio": 0.028 },
-      { "class_name": "marine_debris", "confidence": 0.79, "bbox": [160.0, 310.0, 290.0, 420.0], "area_ratio": 0.022 }
+      {"class_name": "Plastic", "confidence": 0.88, "bbox": [500, 300, 550, 350], "area_ratio": 0.02},
+      {"class_name": "Cloth / Textile", "confidence": 0.81, "bbox": [560, 320, 600, 400], "area_ratio": 0.03},
+      {"class_name": "Other floating debris", "confidence": 0.75, "bbox": [610, 310, 650, 360], "area_ratio": 0.02},
+      {"class_name": "Plastic", "confidence": 0.84, "bbox": [520, 410, 580, 460], "area_ratio": 0.03}
     ],
     "summary": {
-      "dominant_category": "marine_debris",
-      "total_detections": 3,
-      "severity": "Moderate",
-      "severity_score": 48,
-      "average_confidence": 0.82,
-      "max_confidence": 0.86,
-      "estimated_coverage": 0.085
-    }
-  },
-  {
-    "observation_id": "OBS-2026-09-005",
-    "status": "completed",
-    "image_url": "https://images.unsplash.com/photo-1621451537084-482c73073a0f?auto=format&fit=crop&w=800&q=80",
-    "observation_date": "2026-09-10T15:20:00Z",
-    "location": {
-      "name": "Panambur Beach & Commercial Harbour",
-      "latitude": 12.9467,
-      "longitude": 74.8078,
-      "observation_date": "2026-09-10T15:20:00Z"
-    },
-    "detections": [
-      { "class_name": "marine_debris", "confidence": 0.92, "bbox": [80.0, 90.0, 290.0, 320.0], "area_ratio": 0.065 },
-      { "class_name": "marine_debris", "confidence": 0.89, "bbox": [320.0, 160.0, 510.0, 340.0], "area_ratio": 0.052 },
-      { "class_name": "marine_debris", "confidence": 0.85, "bbox": [190.0, 350.0, 380.0, 480.0], "area_ratio": 0.041 },
-      { "class_name": "marine_debris", "confidence": 0.88, "bbox": [430.0, 320.0, 590.0, 470.0], "area_ratio": 0.038 }
-    ],
-    "summary": {
-      "dominant_category": "marine_debris",
+      "dominant_category": "Plastic + Cloth / Textile + Other floating debris",
       "total_detections": 4,
-      "severity": "High",
-      "severity_score": 65,
-      "average_confidence": 0.885,
-      "max_confidence": 0.92,
-      "estimated_coverage": 0.196
-    }
-  },
-  {
-    "observation_id": "OBS-2026-09-006",
-    "status": "completed",
-    "image_url": "https://images.unsplash.com/photo-1544551763-46a013bb70d5?auto=format&fit=crop&w=800&q=80",
-    "observation_date": "2026-09-12T09:00:00Z",
-    "location": {
-      "name": "Karwar Coast - Rabindranath Tagore Beach",
-      "latitude": 14.8092,
-      "longitude": 74.1294,
-      "observation_date": "2026-09-12T09:00:00Z"
-    },
-    "detections": [
-      { "class_name": "marine_debris", "confidence": 0.88, "bbox": [120.0, 150.0, 280.0, 300.0], "area_ratio": 0.032 },
-      { "class_name": "marine_debris", "confidence": 0.84, "bbox": [320.0, 200.0, 450.0, 320.0], "area_ratio": 0.025 },
-      { "class_name": "marine_debris", "confidence": 0.79, "bbox": [190.0, 320.0, 310.0, 420.0], "area_ratio": 0.019 }
-    ],
-    "summary": {
-      "dominant_category": "marine_debris",
-      "total_detections": 3,
       "severity": "Moderate",
       "severity_score": 52,
-      "average_confidence": 0.837,
+      "average_confidence": 0.82,
       "max_confidence": 0.88,
-      "estimated_coverage": 0.076
+      "estimated_coverage": 0.10,
+      "waste_composition": {"Plastic": 50.0, "Cloth / Textile": 25.0, "Other floating debris": 25.0},
+      "ecological_risk": "MODERATE",
+      "ecological_concerns": ["ingestion risk", "entanglement risk", "habitat contamination", "potential water-quality impact"],
+      "ecological_reasoning": "Moderate visible plastic/debris concentration combined with elevated pollution severity."
     }
   },
   {
-    "observation_id": "OBS-2026-09-007",
+    "observation_id": "DEMO-004",
     "status": "completed",
-    "image_url": "https://images.unsplash.com/photo-1618477461853-cf6ed80faba5?auto=format&fit=crop&w=800&q=80",
-    "observation_date": "2026-09-14T11:15:00Z",
+    "image_url": "/uploads/04_high_plastic_debris.jpeg",
+    "observation_date": "2026-09-15T10:15:00Z",
     "location": {
-      "name": "Panambur Beach & Commercial Harbour",
-      "latitude": 12.9467,
-      "longitude": 74.8078,
-      "observation_date": "2026-09-14T11:15:00Z"
+      "name": "Mangalore Coast",
+      "latitude": 12.9141,
+      "longitude": 74.8560,
+      "observation_date": "2026-09-15T10:15:00Z"
     },
     "detections": [
-      { "class_name": "marine_debris", "confidence": 0.94, "bbox": [50.0, 60.0, 320.0, 340.0], "area_ratio": 0.09 },
-      { "class_name": "marine_debris", "confidence": 0.91, "bbox": [350.0, 110.0, 560.0, 320.0], "area_ratio": 0.075 },
-      { "class_name": "marine_debris", "confidence": 0.89, "bbox": [200.0, 340.0, 420.0, 490.0], "area_ratio": 0.055 },
-      { "class_name": "marine_debris", "confidence": 0.93, "bbox": [440.0, 300.0, 610.0, 470.0], "area_ratio": 0.06 }
+      {"class_name":"Plastic","confidence":0.94,"bbox":[151,38,169,62]},
+      {"class_name":"Plastic","confidence":0.91,"bbox":[295,22,315,54]},
+      {"class_name":"Plastic","confidence":0.89,"bbox":[177,70,197,96]}
     ],
     "summary": {
-      "dominant_category": "marine_debris",
-      "total_detections": 4,
+      "dominant_category": "Plastic",
+      "total_detections": 12,
       "severity": "High",
-      "severity_score": 71,
-      "average_confidence": 0.918,
+      "severity_score": 75,
+      "average_confidence": 0.85,
       "max_confidence": 0.94,
-      "estimated_coverage": 0.28
+      "estimated_coverage": 0.22,
+      "waste_composition": {"Plastic": 100.0},
+      "ecological_risk": "HIGH",
+      "ecological_concerns": ["ingestion risk", "entanglement risk", "habitat contamination", "potential water-quality impact"],
+      "ecological_reasoning": "High visible plastic/debris concentration combined with elevated pollution severity."
     }
   },
   {
-    "observation_id": "OBS-2026-09-008",
+    "observation_id": "DEMO-005",
     "status": "completed",
-    "image_url": "https://images.unsplash.com/photo-1621451537084-482c73073a0f?auto=format&fit=crop&w=800&q=80",
-    "observation_date": "2026-09-15T10:30:00Z",
+    "image_url": "/uploads/05_oil_spill.jpeg",
+    "observation_date": "2026-09-15T10:20:00Z",
     "location": {
-      "name": "Karwar Coast - Port Jetty Hotspot",
-      "latitude": 14.8142,
-      "longitude": 74.1351,
-      "observation_date": "2026-09-15T10:30:00Z"
+      "name": "Karwar Coast",
+      "latitude": 14.8167,
+      "longitude": 74.1290,
+      "observation_date": "2026-09-15T10:20:00Z"
     },
     "detections": [
-      { "class_name": "marine_debris", "confidence": 0.96, "bbox": [30.0, 40.0, 360.0, 380.0], "area_ratio": 0.16 },
-      { "class_name": "marine_debris", "confidence": 0.93, "bbox": [380.0, 70.0, 600.0, 340.0], "area_ratio": 0.12 },
-      { "class_name": "marine_debris", "confidence": 0.91, "bbox": [160.0, 360.0, 480.0, 560.0], "area_ratio": 0.11 },
-      { "class_name": "marine_debris", "confidence": 0.88, "bbox": [490.0, 330.0, 620.0, 490.0], "area_ratio": 0.04 },
-      { "class_name": "marine_debris", "confidence": 0.89, "bbox": [50.0, 400.0, 220.0, 530.0], "area_ratio": 0.03 }
+      {"class_name": "Oil / Hydrocarbon-like surface sheen", "confidence": 0.85, "bbox": [150, 100, 500, 350], "area_ratio": 0.18}
     ],
     "summary": {
-      "dominant_category": "marine_debris",
+      "dominant_category": "Oil / Hydrocarbon-like surface sheen",
+      "total_detections": 1,
+      "severity": "High",
+      "severity_score": 78,
+      "average_confidence": 0.85,
+      "max_confidence": 0.85,
+      "estimated_coverage": 0.18,
+      "waste_composition": {"Oil / Hydrocarbon-like surface sheen": 100.0},
+      "ecological_risk": "HIGH",
+      "ecological_concerns": ["water-surface contamination", "potential impact on marine organisms", "shoreline/habitat contamination"],
+      "ecological_reasoning": "High visible oil-spill-like concentration combined with elevated pollution severity."
+    }
+  },
+  {
+    "observation_id": "DEMO-006",
+    "status": "completed",
+    "image_url": "/uploads/06_mixed_cloth_plastic.jpeg",
+    "observation_date": "2026-09-15T10:25:00Z",
+    "location": {
+      "name": "Kapu Coast",
+      "latitude": 13.3447,
+      "longitude": 74.7446,
+      "observation_date": "2026-09-15T10:25:00Z"
+    },
+    "detections": [
+      {"class_name":"Plastic","confidence":0.86,"bbox":[302,155,313,165]},
+      {"class_name":"Cloth / Textile","confidence":0.81,"bbox":[458,188,475,203]},
+      {"class_name":"Other debris","confidence":0.72,"bbox":[230,333,252,347]}
+    ],
+    "summary": {
+      "dominant_category": "Plastic + Cloth / Textile + Other debris",
       "total_detections": 5,
-      "severity": "Critical",
-      "severity_score": 86,
-      "average_confidence": 0.914,
-      "max_confidence": 0.96,
-      "estimated_coverage": 0.46
+      "severity": "High",
+      "severity_score": 68,
+      "average_confidence": 0.77,
+      "max_confidence": 0.86,
+      "estimated_coverage": 0.15,
+      "waste_composition": {"Plastic": 33.3, "Cloth / Textile": 33.3, "Other debris": 33.3},
+      "ecological_risk": "HIGH",
+      "ecological_concerns": ["ingestion risk", "entanglement risk", "habitat contamination", "potential water-quality impact"],
+      "ecological_reasoning": "High visible plastic/debris concentration combined with elevated pollution severity."
     }
   }
 ]

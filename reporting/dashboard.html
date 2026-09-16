@@ -398,15 +398,15 @@
                             </div>
                         </div>
 
-                        <!-- 6. Total Detections Count -->
+                        <!-- 6. Dominant Detected Material -->
                         <div class="bg-surface-container-low p-space-sm rounded-DEFAULT border border-surface-container-highest/40 flex flex-col justify-between">
                             <div class="flex items-center justify-between">
-                                <span class="font-label-mono-xs text-[10px] text-on-surface-variant uppercase">TOTAL DETECTIONS</span>
+                                <span class="font-label-mono-xs text-[10px] text-on-surface-variant uppercase">DOMINANT MATERIAL</span>
                                 <span class="material-symbols-outlined text-[16px] text-secondary-fixed-dim">category</span>
                             </div>
                             <div class="mt-space-sm">
-                                <span class="font-display-hero text-[30px] font-bold text-secondary-fixed-dim leading-none" id="kpi-total-debris">33</span>
-                                <p class="font-label-mono-xs text-[10px] text-on-surface-variant mt-1">Marine Debris Items</p>
+                                <span class="font-display-hero text-[24px] font-bold text-secondary-fixed-dim leading-none truncate block w-full" id="kpi-dominant-cat">None</span>
+                                <p class="font-label-mono-xs text-[10px] text-on-surface-variant mt-1">Primary Material Found</p>
                             </div>
                         </div>
                     </div>
@@ -812,7 +812,7 @@
                                     <span class="w-3 h-3 rounded-full bg-secondary-fixed-dim"></span>
                                     <span class="font-semibold text-secondary-fixed-dim">EST. COVERAGE</span>
                                 </div>
-                                <span class="text-on-surface-variant" id="strip-density">18.5 m² (~42 kg)</span>
+                                <span class="text-on-surface-variant" id="strip-density">18.5% VISIBLE AREA</span>
                             </div>
                             <div class="p-space-sm bg-surface-container-low rounded-DEFAULT flex items-center justify-between border border-surface-container-highest/30">
                                 <div class="flex items-center gap-space-xs">
@@ -827,6 +827,37 @@
                                     <span class="font-semibold text-error">SEVERITY TIER</span>
                                 </div>
                                 <span class="text-on-surface-variant" id="strip-tier">MODERATE</span>
+                            </div>
+                        </div>
+
+                        <!-- Waste Composition & Ecological Impact -->
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-space-md">
+                            <!-- Waste Composition -->
+                            <div class="bg-surface-container-low p-space-md rounded-DEFAULT border border-surface-container-highest/40 flex flex-col justify-between">
+                                <div class="flex items-center justify-between border-b border-surface-container-highest/40 pb-space-xs mb-space-sm">
+                                    <span class="font-label-mono-xs text-label-mono-xs text-primary-container font-bold uppercase tracking-widest">// WASTE COMPOSITION</span>
+                                    <span class="material-symbols-outlined text-[16px] text-primary-container">pie_chart</span>
+                                </div>
+                                <div id="res-waste-composition" class="space-y-1">
+                                    <!-- Populated dynamically -->
+                                </div>
+                            </div>
+                            <!-- Ecological Impact -->
+                            <div class="bg-surface-container-low p-space-md rounded-DEFAULT border border-surface-container-highest/40 flex flex-col justify-between">
+                                <div class="flex items-center justify-between border-b border-surface-container-highest/40 pb-space-xs mb-space-sm">
+                                    <span class="font-label-mono-xs text-label-mono-xs text-error font-bold uppercase tracking-widest">// ECOLOGICAL RISK: <span id="res-eco-risk">UNKNOWN</span></span>
+                                    <span class="material-symbols-outlined text-[16px] text-error">warning</span>
+                                </div>
+                                <div class="space-y-2">
+                                    <div>
+                                        <span class="font-label-mono-xs text-[10px] text-on-surface-variant uppercase">PRIMARY CONCERNS</span>
+                                        <ul id="res-eco-concerns" class="list-disc list-inside font-body-sm text-body-sm text-primary mt-1"></ul>
+                                    </div>
+                                    <div>
+                                        <span class="font-label-mono-xs text-[10px] text-on-surface-variant uppercase">WHY?</span>
+                                        <p id="res-eco-reasoning" class="font-body-sm text-body-sm text-on-surface-variant mt-1"></p>
+                                    </div>
+                                </div>
                             </div>
                         </div>
 
@@ -911,23 +942,26 @@
                                     </div>
                                 </div>
 
-                                <!-- Actionable Directives Card -->
+                                <!-- Incident View Card -->
                                 <div class="bg-surface-container-low p-space-md rounded-DEFAULT border border-surface-container-highest/40 space-y-space-sm flex-1">
                                     <div class="flex items-center justify-between border-b border-surface-container-highest/40 pb-space-xs">
-                                        <span class="font-label-mono-xs text-label-mono-xs text-secondary-container font-bold uppercase tracking-widest">// FIELD DIRECTIVES</span>
-                                        <span class="font-label-mono-xs text-[10px] text-primary" id="rec-urgency">URGENCY: 48 HOURS</span>
+                                        <span class="font-label-mono-xs text-label-mono-xs text-secondary-container font-bold uppercase tracking-widest">// ENVIRONMENTAL INCIDENT</span>
+                                        <span class="font-label-mono-xs text-[10px] text-error font-bold" id="incident-status">AWAITING RESPONSE</span>
                                     </div>
-                                    <h4 class="font-headline-sm text-headline-sm text-primary font-bold" id="rec-title">Routine Coastal Remediation</h4>
-                                    <ul class="space-y-1 font-body-sm text-body-sm text-on-surface-variant" id="rec-list">
-                                        <li class="flex items-start gap-2">
-                                            <span class="material-symbols-outlined text-[16px] text-secondary-container shrink-0 mt-0.5">check_circle</span>
-                                            <span>Deploy shoreline clean-up volunteers with protective equipment.</span>
-                                        </li>
-                                        <li class="flex items-start gap-2">
-                                            <span class="material-symbols-outlined text-[16px] text-secondary-container shrink-0 mt-0.5">check_circle</span>
-                                            <span>Schedule autonomous catamaran skimmer sweep of the inlet basin.</span>
-                                        </li>
-                                    </ul>
+                                    <div class="grid grid-cols-2 gap-x-2 gap-y-3 font-body-sm text-body-sm">
+                                        <div><span class="text-on-surface-variant text-[10px] uppercase block">Incident ID</span><strong class="text-primary" id="inc-id"></strong></div>
+                                        <div><span class="text-on-surface-variant text-[10px] uppercase block">Location</span><strong class="text-primary" id="inc-loc"></strong></div>
+                                        <div><span class="text-on-surface-variant text-[10px] uppercase block">Pollution</span><strong class="text-primary" id="inc-pol"></strong></div>
+                                        <div><span class="text-on-surface-variant text-[10px] uppercase block">Severity</span><strong class="text-error" id="inc-sev"></strong></div>
+                                        <div><span class="text-on-surface-variant text-[10px] uppercase block">Ecological Risk</span><strong class="text-error" id="inc-risk"></strong></div>
+                                        <div><span class="text-on-surface-variant text-[10px] uppercase block">Recommended Action</span><strong class="text-secondary-container" id="inc-rec">Field verification / cleanup</strong></div>
+                                    </div>
+                                    <div class="pt-2 hidden" id="alert-btn-container">
+                                        <button class="w-full inline-flex justify-center items-center gap-2 px-space-md py-2 bg-error text-white font-label-mono-xs font-bold rounded hover:bg-red-600 transition-colors" onclick="generateResponseAlert()">
+                                            <span class="material-symbols-outlined text-[16px]">campaign</span> GENERATE RESPONSE ALERT
+                                        </button>
+                                        <p class="text-[9px] text-on-surface-variant text-center mt-1">Prototype response workflow — external notification integration is planned for future deployment.</p>
+                                    </div>
                                     <div class="pt-space-sm border-t border-surface-container-highest/40 flex flex-wrap items-center gap-space-xs justify-between">
                                         <button class="inline-flex items-center gap-1 px-space-sm py-1.5 bg-surface-container-high rounded-DEFAULT hover:bg-surface-bright text-on-surface font-label-mono-xs text-label-mono-xs font-semibold" onclick="scrollToSection('analyse-section')" type="button">
                                             <span class="material-symbols-outlined text-[14px]">arrow_back</span>
@@ -1553,7 +1587,7 @@
                             <span class="material-symbols-outlined text-[20px] text-primary-container shrink-0 mt-0.5">verified_user</span>
                             <div>
                                 <strong class="text-primary block font-bold uppercase tracking-wider">SCIENTIFIC BOUNDARY NOTICE</strong>
-                                <p class="text-on-surface-variant mt-0.5">
+                                <p class="text-on-surface-variant mt-0.5" id="rpt-disclaimer-text">
                                     This analysis identifies visible marine-debris indicators from the submitted image. It is not a laboratory or chemical contamination assessment.
                                 </p>
                             </div>
@@ -2073,7 +2107,17 @@ void main() {
         const date = obs.observation_date || '2026-09-15 10:00 UTC';
         const id = obs.observation_id || obs.analysis_id || 'OBS-LIVE';
         const imageUrl = obs.image_url || '';
-        return { score, detCount, severity, avgConf, peakConf, dominantCategory, isLive, locName, lat, lon, date, id, imageUrl };
+        const coverage = Number(s.estimated_coverage !== undefined ? s.estimated_coverage : 0);
+        const wasteComposition = s.waste_composition || {};
+        const ecologicalRisk = s.ecological_risk || 'UNKNOWN';
+        const ecologicalConcerns = s.ecological_concerns || [];
+        const ecologicalReasoning = s.ecological_reasoning || '';
+
+        return { 
+            score, detCount, severity, avgConf, peakConf, dominantCategory, 
+            isLive, locName, lat, lon, date, id, imageUrl, coverage,
+            wasteComposition, ecologicalRisk, ecologicalConcerns, ecologicalReasoning
+        };
     }
 
     // Smooth Scroll Helper & Active Nav Highlighter
@@ -2210,21 +2254,42 @@ void main() {
             
             // --- HACKATHON DEMO AUTO-POPULATE ---
             const normalizedFileName = file.name.replace(/\.jpeg$/i, '.jpg').toLowerCase();
-            if (normalizedFileName === '01_high_debris.jpg') {
-                document.getElementById('input-loc').value = 'Karwar Coast';
-                document.getElementById('input-lat').value = '14.80';
-                document.getElementById('input-lon').value = '74.13';
-                initDateTimeInputs();
-            } else if (normalizedFileName === '02_moderate_debris.jpg') {
+            if (normalizedFileName === '01_clean_water.jpg') {
+                document.getElementById('input-loc').value = 'Gokarna Coast';
+                document.getElementById('input-lat').value = '14.5479';
+                document.getElementById('input-lon').value = '74.3188';
+                document.getElementById('input-date').value = '2026-09-15';
+                document.getElementById('input-time').value = '10:00';
+            } else if (normalizedFileName === '02_low_plastic.jpg') {
+                document.getElementById('input-loc').value = 'Malpe Coast';
+                document.getElementById('input-lat').value = '13.3310';
+                document.getElementById('input-lon').value = '74.7467';
+                document.getElementById('input-date').value = '2026-09-15';
+                document.getElementById('input-time').value = '10:05';
+            } else if (normalizedFileName === '03_moderate_mixed_debris.jpg') {
                 document.getElementById('input-loc').value = 'Panambur Beach';
-                document.getElementById('input-lat').value = '12.95';
-                document.getElementById('input-lon').value = '74.80';
-                initDateTimeInputs();
-            } else if (normalizedFileName === '03_low_debris.jpg') {
-                document.getElementById('input-loc').value = 'Malpe Beach';
-                document.getElementById('input-lat').value = '13.35';
-                document.getElementById('input-lon').value = '74.70';
-                initDateTimeInputs();
+                document.getElementById('input-lat').value = '12.9784';
+                document.getElementById('input-lon').value = '74.8083';
+                document.getElementById('input-date').value = '2026-09-15';
+                document.getElementById('input-time').value = '10:10';
+            } else if (normalizedFileName === '04_high_plastic_debris.jpg') {
+                document.getElementById('input-loc').value = 'Mangalore Coast';
+                document.getElementById('input-lat').value = '12.9141';
+                document.getElementById('input-lon').value = '74.8560';
+                document.getElementById('input-date').value = '2026-09-15';
+                document.getElementById('input-time').value = '10:15';
+            } else if (normalizedFileName === '05_oil_spill.jpg') {
+                document.getElementById('input-loc').value = 'Karwar Coast';
+                document.getElementById('input-lat').value = '14.8167';
+                document.getElementById('input-lon').value = '74.1290';
+                document.getElementById('input-date').value = '2026-09-15';
+                document.getElementById('input-time').value = '10:20';
+            } else if (normalizedFileName === '06_mixed_cloth_plastic.jpg') {
+                document.getElementById('input-loc').value = 'Kapu Coast';
+                document.getElementById('input-lat').value = '13.3447';
+                document.getElementById('input-lon').value = '74.7446';
+                document.getElementById('input-date').value = '2026-09-15';
+                document.getElementById('input-time').value = '10:25';
             }
         };
         reader.readAsDataURL(file);
@@ -2297,15 +2362,15 @@ void main() {
 
             // SIMULATED 5-SECOND PROCESSING
             bar.style.width = '20%';
-            status.innerText = 'ANALYZING IMAGE\n[✓] Image ingestion';
+            status.innerText = 'ANALYZING IMAGE\n[✓] IMAGE INGESTION';
             await new Promise(r => setTimeout(r, 1000));
             
             bar.style.width = '40%';
-            status.innerText = 'ANALYZING IMAGE\n[✓] Image preprocessing';
+            status.innerText = 'ANALYZING IMAGE\n[✓] VISUAL ANALYSIS';
             await new Promise(r => setTimeout(r, 1000));
             
             bar.style.width = '60%';
-            status.innerText = 'ANALYZING IMAGE\n[→] Marine debris detection';
+            status.innerText = 'ANALYZING IMAGE\n[→] MATERIAL CLASSIFICATION';
             
             // Execute actual API call while animating
             const analyzeRes = await fetch('/api/v1/analyze', {
@@ -2313,6 +2378,7 @@ void main() {
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({
                     image_url: userUploadedServerUrl || `/uploads/${userSelectedFile.name}`,
+                    original_filename: userSelectedFile.name,
                     location: { name: locName, latitude: lat, longitude: lon },
                     observation_date: `${dateStr} ${timeStr} UTC`
                 })
@@ -2321,11 +2387,11 @@ void main() {
             
             await new Promise(r => setTimeout(r, 1500));
             bar.style.width = '80%';
-            status.innerText = 'ANALYZING IMAGE\n[ ] Evidence quantification';
+            status.innerText = 'ANALYZING IMAGE\n[ ] SPATIAL ANALYSIS';
             
             await new Promise(r => setTimeout(r, 1500));
             bar.style.width = '100%';
-            status.innerText = 'ANALYSIS COMPLETE';
+            status.innerText = 'GENERATING OBSERVATION REPORT\nRESULT READY';
 
             if (spinIcon) spinIcon.classList.remove('animate-spin');
 
@@ -2432,8 +2498,23 @@ void main() {
         }
 
         document.getElementById('kpi-locations-count').innerText = locationsSet.size;
-        document.getElementById('kpi-total-debris').innerText = totalDebris;
-
+        
+        let allCategories = [];
+        globalObservations.forEach(obs => {
+            const s = getObsSummary(obs);
+            if (s.dominantCategory && s.dominantCategory !== 'None') {
+                allCategories.push(...s.dominantCategory.split(' + '));
+            }
+        });
+        const counts = {};
+        let maxCount = 0;
+        let dominantMat = 'None';
+        allCategories.forEach(c => {
+            counts[c] = (counts[c] || 0) + 1;
+            if (counts[c] > maxCount) { maxCount = counts[c]; dominantMat = c; }
+        });
+        document.getElementById('kpi-dominant-cat').innerText = dominantMat;
+        document.getElementById('kpi-dominant-cat').title = dominantMat;
         // Dynamic stacked distribution bar
         const stackedBar = document.getElementById('dist-stacked-bar');
         if (stackedBar) {
@@ -2657,6 +2738,7 @@ void main() {
                     <div style="font-size: 12px; font-weight: bold; color: #d5e3fd; margin-top: 3px;">${s.locName}</div>
                     <div style="font-size: 10px; color: #849495; margin-top: 1px;">${s.date}</div>
                     <div style="font-size: 11px; color: ${color}; font-weight: bold; margin-top: 4px;">${s.severity.toUpperCase()} (${s.score.toFixed(0)}/100)</div>
+                    <div style="font-size: 10px; color: #ffb4ab; font-weight: bold; margin-top: 2px;">RISK: ${s.ecologicalRisk.toUpperCase()}</div>
                     <div style="font-size: 10px; color: #b9cacb; margin-top: 2px;">${s.detCount} visible debris items</div>
                     <button onclick='displayResult(OBSERVATIONS.find(o => o.observation_id === "${s.id}" || o.analysis_id === "${s.id}")); scrollToSection("results-section");' style="margin-top: 8px; width: 100%; background: #00f2fe; color: #00373a; border: none; padding: 5px 8px; font-size: 10px; font-family: 'JetBrains Mono', monospace; font-weight: bold; border-radius: 2px; cursor: pointer;">INSPECT INCIDENT</button>
                 </div>
@@ -3019,7 +3101,7 @@ void main() {
         document.getElementById('hud-peak-conf').innerText = `${(s.peakConf * 100).toFixed(1)}%`;
 
         document.getElementById('strip-plastic-count').innerText = `${s.detCount} DETECTIONS (${(s.peakConf * 100).toFixed(0)}%)`;
-        document.getElementById('strip-density').innerText = `${(s.detCount * 6.2).toFixed(1)} m² (~${(s.detCount * 14).toFixed(0)} kg)`;
+        document.getElementById('strip-density').innerText = s.coverage != null ? `${(s.coverage * 100).toFixed(1)}% VISIBLE AREA` : 'N/A';
         document.getElementById('strip-peak-conf').innerText = `${(s.peakConf * 100).toFixed(1)}%`;
         document.getElementById('strip-tier').innerText = s.severity.toUpperCase();
 
@@ -3036,6 +3118,50 @@ void main() {
         tierBadge.className = s.severity === 'Critical' || s.severity === 'High'
             ? 'font-label-mono-xs text-label-mono-xs font-bold px-space-xs py-0.5 bg-error/20 text-error rounded-DEFAULT'
             : 'font-label-mono-xs text-label-mono-xs font-bold px-space-xs py-0.5 bg-secondary-container/20 text-secondary-container rounded-DEFAULT';
+
+        // Populate Waste Composition
+        const compContainer = document.getElementById('res-waste-composition');
+        compContainer.innerHTML = '';
+        if (Object.keys(s.wasteComposition || {}).length === 0) {
+            compContainer.innerHTML = '<span class="text-on-surface-variant font-label-mono-xs text-[10px]">NO VISIBLE DEBRIS DETECTED</span>';
+        } else {
+            for (const [material, pct] of Object.entries(s.wasteComposition)) {
+                compContainer.innerHTML += `
+                    <div class="flex items-center justify-between font-label-mono-xs text-label-mono-xs">
+                        <span class="text-primary">${material.toUpperCase()}</span>
+                        <span class="text-secondary-fixed-dim font-bold">${pct.toFixed(1)}%</span>
+                    </div>
+                `;
+            }
+        }
+
+        // Populate Ecological Impact
+        document.getElementById('res-eco-risk').innerText = s.ecologicalRisk || 'UNKNOWN';
+        const concernsEl = document.getElementById('res-eco-concerns');
+        concernsEl.innerHTML = '';
+        (s.ecologicalConcerns || []).forEach(c => {
+            concernsEl.innerHTML += `<li>${c}</li>`;
+        });
+        document.getElementById('res-eco-reasoning').innerText = s.ecologicalReasoning || '';
+
+        // Populate Incident View
+        document.getElementById('inc-id').innerText = s.id;
+        document.getElementById('inc-loc').innerText = s.locName;
+        document.getElementById('inc-pol').innerText = s.dominantCategory || 'None';
+        document.getElementById('inc-sev').innerText = s.severity.toUpperCase();
+        document.getElementById('inc-risk').innerText = s.ecologicalRisk || 'UNKNOWN';
+        
+        const alertBtn = document.getElementById('alert-btn-container');
+        const incidentStatus = document.getElementById('incident-status');
+        if (s.severity === 'High' || s.severity === 'Critical') {
+            alertBtn.classList.remove('hidden');
+            incidentStatus.innerText = 'AWAITING RESPONSE';
+            incidentStatus.className = 'font-label-mono-xs text-[10px] text-error font-bold';
+        } else {
+            alertBtn.classList.add('hidden');
+            incidentStatus.innerText = 'NO ACTION REQUIRED';
+            incidentStatus.className = 'font-label-mono-xs text-[10px] text-on-surface-variant font-bold';
+        }
 
         // Transparent 4-Factor Score Breakdown
         const countPts = (Math.min(s.detCount, 10) / 10 * 40).toFixed(1);
@@ -3103,7 +3229,14 @@ void main() {
         document.getElementById('rpt-bd-cov').innerText = covPts;
 
         document.getElementById('rpt-summary-text').innerText =
-            `Single-image optical surveillance conducted over ${s.locName} identified visible anthropogenic marine debris clusters (${s.detCount} items) with a mean detection confidence of ${(s.avgConf * 100).toFixed(1)}% and peak confidence of ${(s.peakConf * 100).toFixed(1)}%. The computed visual severity index of ${s.score.toFixed(1)}/100 maps to a ${s.severity} risk tier. Standard field protocols have been prepared.`;
+            `Single-image optical surveillance conducted over ${s.locName} identified visible ${s.dominantCategory !== 'None' ? s.dominantCategory.toLowerCase() : 'marine debris'} with a mean detection confidence of ${(s.avgConf * 100).toFixed(1)}% and peak confidence of ${(s.peakConf * 100).toFixed(1)}%. The computed visual severity index of ${s.score.toFixed(1)}/100 maps to a ${s.severity} risk tier. Standard field protocols have been prepared.`;
+
+        const disclaimerEl = document.getElementById('rpt-disclaimer-text');
+        if (s.dominantCategory && s.dominantCategory.toLowerCase().includes('oil')) {
+            disclaimerEl.innerText = "This analysis identifies visible marine-debris indicators from the submitted image. It is not a laboratory or chemical contamination assessment. For oil: This observation shows a visible surface pattern consistent with an oil-spill-like appearance. Image analysis alone cannot confirm chemical contamination.";
+        } else {
+            disclaimerEl.innerText = "This analysis identifies visible marine-debris indicators from the submitted image. It is not a laboratory or chemical contamination assessment.";
+        }
 
         // Render Report Detections Table
         const rptTbody = document.getElementById('rpt-detections-table-body');
@@ -3165,6 +3298,13 @@ void main() {
             img.style.filter = 'none';
             btn.className = 'px-2 py-1 rounded-DEFAULT bg-surface-container text-on-surface-variant font-label-mono-xs text-label-mono-xs hover:text-on-surface';
         }
+    }
+
+    function generateResponseAlert() {
+        const statusEl = document.getElementById('incident-status');
+        statusEl.innerText = 'ALERT TRANSMITTED';
+        statusEl.className = 'font-label-mono-xs text-[10px] text-secondary-container font-bold';
+        alert("RESPONSE ALERT GENERATED\n\nIncident ID: " + document.getElementById('inc-id').innerText + "\nPriority: " + document.getElementById('inc-sev').innerText + "\nLocation: " + document.getElementById('inc-loc').innerText + "\nDetected Pollution: " + document.getElementById('inc-pol').innerText + "\nRecommended Action: Field verification / cleanup\nSuggested Stakeholder: Coastal Cleanup NGO / Environmental Response Team\nStatus: ALERT TRANSMITTED");
     }
 
     // =========================================================================

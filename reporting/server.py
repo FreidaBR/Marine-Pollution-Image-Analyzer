@@ -362,52 +362,89 @@ class AnalyticsRequestHandler(BaseHTTPRequestHandler):
                 observation_date=loc_data.get("observation_date") or body.get("observation_date"),
             )
             image_url = body.get("image_url")
+            original_filename = body.get("original_filename") or ""
             date_str = body.get("observation_date") or loc.observation_date or "2026-09-15 10:00 UTC"
 
-            image_fname = os.path.basename(image_url or "")
+            image_fname = os.path.basename(original_filename) if original_filename else os.path.basename(image_url or "")
             lookup_name = image_fname.lower().replace('.jpeg', '.jpg')
 
             demo_profiles = {
-                "01_high_debris.jpg": [
-                    {"class_name":"marine_debris","confidence":0.94,"bbox":[151,38,169,62]},
-                    {"class_name":"marine_debris","confidence":0.91,"bbox":[295,22,315,54]},
-                    {"class_name":"marine_debris","confidence":0.89,"bbox":[177,70,197,96]},
-                    {"class_name":"marine_debris","confidence":0.87,"bbox":[306,80,331,108]},
-                    {"class_name":"marine_debris","confidence":0.86,"bbox":[312,102,327,125]},
-                    {"class_name":"marine_debris","confidence":0.84,"bbox":[112,122,150,139]},
-                    {"class_name":"marine_debris","confidence":0.83,"bbox":[68,117,91,131]},
-                    {"class_name":"marine_debris","confidence":0.82,"bbox":[267,194,286,216]},
-                    {"class_name":"marine_debris","confidence":0.80,"bbox":[294,145,310,164]},
-                    {"class_name":"marine_debris","confidence":0.78,"bbox":[430,178,455,201]},
-                    {"class_name":"marine_debris","confidence":0.76,"bbox":[22,178,52,201]},
-                    {"class_name":"marine_debris","confidence":0.73,"bbox":[377,220,403,244]}
-                ],
-                "02_moderate_debris.jpg": [
-                    {"class_name":"marine_debris","confidence":0.86,"bbox":[302,155,313,165]},
-                    {"class_name":"marine_debris","confidence":0.81,"bbox":[458,188,475,203]},
-                    {"class_name":"marine_debris","confidence":0.78,"bbox":[397,284,418,302]},
-                    {"class_name":"marine_debris","confidence":0.72,"bbox":[230,333,252,347]},
-                    {"class_name":"marine_debris","confidence":0.68,"bbox":[33,331,52,344]}
-                ],
-                "03_low_debris.jpg": [
-                    {"class_name":"marine_debris","confidence":0.74,"bbox":[492,91,518,103]},
-                    {"class_name":"marine_debris","confidence":0.63,"bbox":[300,267,315,278]},
-                    {"class_name":"marine_debris","confidence":0.71,"bbox":[80,368,125,407]}
-                ]
-            }
-
-            demo_dims = {
-                "01_high_debris.jpg": (480, 253),
-                "02_moderate_debris.jpg": (715, 429),
-                "03_low_debris.jpg": (667, 460)
+                "01_clean_water.jpg": {
+                    "dims": (1376, 768),
+                    "detections": [],
+                    "location": {"name": "Gokarna Coast", "latitude": 14.5479, "longitude": 74.3188},
+                },
+                "02_low_plastic.jpg": {
+                    "dims": (1376, 768),
+                    "detections": [
+                        {"class_name": "Plastic", "confidence": 0.85, "bbox": [200, 200, 250, 250], "area_ratio": 0.02},
+                        {"class_name": "Plastic", "confidence": 0.78, "bbox": [800, 400, 840, 450], "area_ratio": 0.01},
+                        {"class_name": "Plastic", "confidence": 0.82, "bbox": [600, 600, 620, 650], "area_ratio": 0.01}
+                    ],
+                    "location": {"name": "Malpe Coast", "latitude": 13.3310, "longitude": 74.7467},
+                },
+                "03_moderate_mixed_debris.jpg": {
+                    "dims": (1376, 768),
+                    "detections": [
+                        {"class_name": "Plastic", "confidence": 0.88, "bbox": [500, 300, 550, 350], "area_ratio": 0.02},
+                        {"class_name": "Cloth / Textile", "confidence": 0.81, "bbox": [560, 320, 600, 400], "area_ratio": 0.03},
+                        {"class_name": "Other floating debris", "confidence": 0.75, "bbox": [610, 310, 650, 360], "area_ratio": 0.02},
+                        {"class_name": "Plastic", "confidence": 0.84, "bbox": [520, 410, 580, 460], "area_ratio": 0.03}
+                    ],
+                    "location": {"name": "Panambur Beach", "latitude": 12.9784, "longitude": 74.8083},
+                },
+                "04_high_plastic_debris.jpg": {
+                    "dims": (480, 253),
+                    "detections": [
+                        {"class_name":"Plastic","confidence":0.94,"bbox":[151,38,169,62]},
+                        {"class_name":"Plastic","confidence":0.91,"bbox":[295,22,315,54]},
+                        {"class_name":"Plastic","confidence":0.89,"bbox":[177,70,197,96]},
+                        {"class_name":"Plastic","confidence":0.87,"bbox":[306,80,331,108]},
+                        {"class_name":"Plastic","confidence":0.86,"bbox":[312,102,327,125]},
+                        {"class_name":"Plastic","confidence":0.84,"bbox":[112,122,150,139]},
+                        {"class_name":"Plastic","confidence":0.83,"bbox":[68,117,91,131]},
+                        {"class_name":"Plastic","confidence":0.82,"bbox":[267,194,286,216]},
+                        {"class_name":"Plastic","confidence":0.80,"bbox":[294,145,310,164]},
+                        {"class_name":"Plastic","confidence":0.78,"bbox":[430,178,455,201]},
+                        {"class_name":"Plastic","confidence":0.76,"bbox":[22,178,52,201]},
+                        {"class_name":"Plastic","confidence":0.73,"bbox":[377,220,403,244]}
+                    ],
+                    "location": {"name": "Mangalore Coast", "latitude": 12.9141, "longitude": 74.8560},
+                },
+                "05_oil_spill.jpg": {
+                    "dims": (667, 460),
+                    "detections": [
+                        {"class_name": "Oil / Hydrocarbon-like surface sheen", "confidence": 0.85, "bbox": [150, 100, 500, 350], "area_ratio": 0.18}
+                    ],
+                    "location": {"name": "Karwar Coast", "latitude": 14.8167, "longitude": 74.1290},
+                },
+                "06_mixed_cloth_plastic.jpg": {
+                    "dims": (715, 429),
+                    "detections": [
+                        {"class_name":"Plastic","confidence":0.86,"bbox":[302,155,313,165]},
+                        {"class_name":"Cloth / Textile","confidence":0.81,"bbox":[458,188,475,203]},
+                        {"class_name":"Plastic","confidence":0.78,"bbox":[397,284,418,302]},
+                        {"class_name":"Other debris","confidence":0.72,"bbox":[230,333,252,347]},
+                        {"class_name":"Cloth / Textile","confidence":0.68,"bbox":[33,331,52,344]}
+                    ],
+                    "location": {"name": "Kapu Coast", "latitude": 13.3447, "longitude": 74.7446},
+                }
             }
 
             is_demo = lookup_name in demo_profiles
             detections_list = []
 
             if is_demo:
-                w, h = demo_dims[lookup_name]
-                for d in demo_profiles[lookup_name]:
+                prof = demo_profiles[lookup_name]
+                w, h = prof["dims"]
+                # Override location
+                loc = Location(
+                    name=prof["location"]["name"],
+                    latitude=prof["location"]["latitude"],
+                    longitude=prof["location"]["longitude"],
+                    observation_date=date_str
+                )
+                for d in prof["detections"]:
                     b = d["bbox"]
                     d["bbox"] = [b[0]/w, b[1]/h, b[2]/w, b[3]/h]
                     detections_list.append(Detection(**d))
